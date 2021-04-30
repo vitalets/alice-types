@@ -1,6 +1,7 @@
 // See: https://yandex.ru/dev/dialogs/alice/doc/protocol.html#request
 
 import { Nlu } from './nlu';
+export * from './nlu';
 
 export interface ReqBody {
   meta: Meta;

@@ -1,6 +1,7 @@
 // See: https://yandex.ru/dev/dialogs/alice/doc/protocol.html#response
 
 import { Card } from './images';
+export * from './images';
 
 export interface ResBody {
   response: Response;

@@ -15,7 +15,7 @@
     "release-minor": "VER=minor npm run release"
   },
   "lint-staged": {
-    "{src}/**/*.ts": "eslint --ext .ts"
+    "src/**/*.ts": "eslint --ext .ts"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.22.0",

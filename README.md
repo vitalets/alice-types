@@ -15,3 +15,5 @@ function handler(reqBody: ReqBody): ResBody {
   ...
 }
 ```
+## Лицензия
+MIT @ [Vitaliy Potapov](https://github.com/vitalets)

@@ -48,7 +48,7 @@ export interface Session {
 }
 
 export interface State {
-  session?: unknown;
-  application?: unknown;
-  user?: unknown;
+  session?: Record<string, unknown>;
+  application?: Record<string, unknown>;
+  user?: Record<string, unknown>;
 }

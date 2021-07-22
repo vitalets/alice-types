@@ -7,9 +7,9 @@ export interface ResBody {
   response: Response;
   version: '1.0';
   analytics?: Analytics;
-  session_state?: unknown;
-  application_state?: unknown;
-  user_state_update?: unknown;
+  session_state?: Record<string, unknown>;
+  application_state?: Record<string, unknown>;
+  user_state_update?: Record<string, unknown>;
 }
 
 export interface Response {

@@ -1,10 +1,4 @@
-export type Card = ImageButton | ItemsList | ImageGallery;
-
-export interface ImageButton {
-  text?: string;
-  url?: string;
-  payload?: unknown;
-}
+export type Card = BigImage | ItemsList | ImageGallery;
 
 export interface BigImage {
   type: 'BigImage';
@@ -41,4 +35,10 @@ export interface ImageGallery {
 export interface ImageGalleryItem {
   image_id: string;
   title?: string;
+}
+
+export interface ImageButton {
+  text?: string;
+  url?: string;
+  payload?: unknown;
 }

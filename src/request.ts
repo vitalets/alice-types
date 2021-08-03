@@ -36,6 +36,7 @@ export interface Session {
   message_id: number;
   session_id: string;
   skill_id: string;
+  /** @deprecated */
   user_id: string;
   user?: {
     user_id: string;

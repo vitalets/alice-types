@@ -2,15 +2,16 @@
   "name": "alice-types",
   "description": "Types for Yandex Alice",
   "version": "1.1.0",
-  "types": "src/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
-    "src",
+    "dist",
     "README.md"
   ],
   "scripts": {
     "init": "git config core.hooksPath ./.hooks",
-    "lint": "eslint --ext .ts ./src && tsc --noEmit",
-    "release": "npm run lint && npm version $VER && npm publish && git push --follow-tags --no-verify",
+    "lint": "eslint --ext .ts ./src",
+    "build": "rm -rf dist && tsc",
+    "release": "npm run lint && npm run build && npm version $VER && npm publish && git push --follow-tags --no-verify",
     "release-patch": "VER=patch npm run release",
     "release-minor": "VER=minor npm run release"
   },

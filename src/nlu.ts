@@ -1,20 +1,45 @@
+/**
+ * Entities: https://yandex.ru/dev/dialogs/alice/doc/naming-entities.html
+ * Intents: https://yandex.ru/dev/dialogs/alice/doc/nlu.html
+ */
 export interface Nlu {
   tokens: string[];
-  entities: NluEntity[];
-  intents?: Record<string, unknown>;
+  entities: Entity[];
+  intents?: Record<string, Intent>;
 }
 
-export type NluEntity = YandexFio | YandexGeo | YandexDatetime | YandexNumber;
-
-export interface YandexBaseEntity {
-  tokens: {
-    start: number;
-    end: number;
-  };
+export interface Intent {
+  slots: Record<string, Slot>
 }
 
-export interface YandexFio extends YandexBaseEntity {
-  type: 'YANDEX.FIO';
+// types
+export enum YANDEX {
+  FIO = 'YANDEX.FIO',
+  GEO = 'YANDEX.GEO',
+  DATETIME = 'YANDEX.DATETIME',
+  NUMBER = 'YANDEX.NUMBER',
+  STRING = 'YANDEX.STRING',
+}
+
+// built-in intents
+export enum INTENTS {
+  CONFIRM = 'YANDEX.CONFIRM',
+  REJECT = 'YANDEX.REJECT',
+  HELP = 'YANDEX.HELP',
+  REPEAT = 'YANDEX.REPEAT',
+}
+
+export type Entity = YandexFio | YandexGeo | YandexDatetime | YandexNumber;
+export type Slot = YandexFio | YandexGeo | YandexDatetime | YandexNumber | YandexString;
+
+export interface Tokens {
+  start: number;
+  end: number;
+}
+
+export interface YandexFio {
+  type: YANDEX.FIO;
+  tokens: Tokens;
   value: {
     first_name?: string;
     patronymic_name?: string;
@@ -22,8 +47,9 @@ export interface YandexFio extends YandexBaseEntity {
   }
 }
 
-export interface YandexGeo extends YandexBaseEntity {
-  type: 'YANDEX.GEO';
+export interface YandexGeo {
+  type: YANDEX.GEO;
+  tokens: Tokens;
   value: {
     country?: string;
     city?: string;
@@ -33,8 +59,9 @@ export interface YandexGeo extends YandexBaseEntity {
   }
 }
 
-export interface YandexDatetime extends YandexBaseEntity {
-  type: 'YANDEX.DATETIME';
+export interface YandexDatetime {
+  type: YANDEX.DATETIME;
+  tokens: Tokens;
   value: {
     year?: number;
     month?: number;
@@ -48,7 +75,12 @@ export interface YandexDatetime extends YandexBaseEntity {
   }
 }
 
-export interface YandexNumber extends YandexBaseEntity {
-  type: 'YANDEX.NUMBER';
+export interface YandexNumber {
+  type: YANDEX.NUMBER;
   value: number;
+}
+
+export interface YandexString {
+  type: YANDEX.STRING;
+  value: string;
 }
